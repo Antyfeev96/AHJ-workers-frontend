@@ -1,1 +1,1 @@
-console.log('Hello there!');
+import './css/style.scss';
