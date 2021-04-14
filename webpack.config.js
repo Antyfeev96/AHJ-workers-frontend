@@ -31,8 +31,10 @@ module.exports = {
         loader: 'babel-loader',
       },
       {
-        test: /\.(?:ico|gif|png|jpg|jpeg)$/i,
-        type: 'asset/resource',
+        test: /\.(jpg|png)$/,
+        use: {
+          loader: 'url-loader',
+        },
       },
       {
         test: /\.(png|jpe?g|gif)$/i,
