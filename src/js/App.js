@@ -1,3 +1,5 @@
-import img from '../images/meme.jpg';
+import meme from '../images/meme.jpg';
 
-document.querySelector('.article__img').src = img;
+const img = document.querySelector('.article__image');
+
+img.src = meme;

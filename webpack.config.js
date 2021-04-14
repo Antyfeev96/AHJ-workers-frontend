@@ -31,18 +31,16 @@ module.exports = {
         loader: 'babel-loader',
       },
       {
-        test: /\.(jpg|png)$/,
-        use: {
-          loader: 'url-loader',
-        },
+        test: /\.(png|svg|jpg|jpeg|gif)$/i,
+        type: 'asset/resource',
       },
       {
-        test: /\.(png|jpe?g|gif)$/i,
+        test: /\.(png|jpg|gif)$/i,
         use: [
           {
             loader: 'file-loader',
             options: {
-              name: 'src/images/[name].[ext]',
+              name: '.src//images/[name].[ext]',
             },
           },
         ],
