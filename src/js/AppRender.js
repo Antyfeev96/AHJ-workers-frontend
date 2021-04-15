@@ -16,8 +16,8 @@ export default class AppRender {
     this.newsUpdaterEl.textContent = 'Обновить';
     this.newsArticlesEl = document.createElement('div');
     this.newsArticlesEl.className = 'news__articles';
-    this.newsEl.appendChild(this.newsTitleEl, this.newsUpdaterEl, this.newsArticlesEl);
-    this.container.appendChild(this.newsEl);
-    this.body.appendChild(this.container);
+    this.newsEl.append(this.newsTitleEl, this.newsUpdaterEl, this.newsArticlesEl);
+    this.container.append(this.newsEl);
+    this.body.append(this.container);
   }
 }
