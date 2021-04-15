@@ -22,12 +22,12 @@ export default class AppRender {
     this.body.append(this.container);
   }
 
-  renderArticle() {
+  renderArticle(timestamp) {
     this.articleEl = document.createElement('div');
     this.articleEl.className = 'article';
     this.timestampEl = document.createElement('div');
     this.timestampEl.className = 'article__timestamp';
-    this.timestampEl.textContent = '22:37 15.04.2021';
+    this.timestampEl.textContent = timestamp;
     this.descriptionEl = document.createElement('div');
     this.descriptionEl.className = 'article__description';
     this.descriptionEl.textContent = 'Мстители 228 стартуют в кинотеатрах уже 322 февраля 1488 года';
