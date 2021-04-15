@@ -1,12 +1,8 @@
 import App from './AppRender';
-import meme from '../images/meme.jpg';
+import icon from '../images/meme.jpg';
 
-const app = new App();
+const app = new App(icon);
 app.initRender();
-
-// const myIcon = document.createElement('img');
-// myIcon.src = meme;
-// myIcon.className = 'article__image';
-// myIcon.style.width = `${75}px`;
-// myIcon.style.height = `${75}px`;
-// document.querySelector('.article__timestamp').insertAdjacentElement('afterend', myIcon);
+for (let i = 0; i < 3; i += 1) {
+  app.renderArticle();
+}
