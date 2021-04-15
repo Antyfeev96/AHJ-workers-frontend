@@ -12,6 +12,7 @@ module.exports = {
   mode: 'development',
   output: {
     filename: 'bundle.js',
+    path: path.resolve(__dirname, 'dist'),
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin({}),
@@ -35,19 +36,7 @@ module.exports = {
         type: 'asset/resource',
       },
       {
-        test: /\.(png|jpg|gif)$/i,
-        use: [
-          {
-            loader: 'file-loader',
-            options: {
-              name: '.src//images/[name].[ext]',
-            },
-          },
-        ],
-      },
-      {
         test: /.(sa|sc|c)ss$/,
-
         use: [
           {
             loader: MiniCssExtractPlugin.loader,
