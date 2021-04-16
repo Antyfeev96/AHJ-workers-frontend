@@ -1,15 +1,14 @@
 export default class AppRender {
-  constructor(img) {
+  constructor() {
     this.body = document.body;
     this.container = document.createElement('div');
     this.container.className = 'container';
-    this.icon = img;
+    this.timestamp = '19:03 02.10.2019';
+    this.icon = 'https://www.flaticon.com/svg/vstatic/svg/4465/4465197.svg?token=exp=1618576709~hmac=45f10748628b85cbc09b6a3698a19941';
+    this.description = 'laborum libero quos omnis iste laboriosam quo inventore aut magni';
   }
 
-  initRender() {
-    while (this.body.firstChild) {
-      this.body.firstChild.remove();
-    }
+  loadingRender() {
     this.newsEl = document.createElement('div');
     this.newsEl.className = 'news';
     this.newsTitleEl = document.createElement('div');
@@ -23,11 +22,26 @@ export default class AppRender {
     this.newsEl.append(this.newsTitleEl, this.newsUpdaterEl, this.newsArticlesEl);
     this.container.append(this.newsEl);
     this.body.append(this.container);
+    for (let i = 0; i < 2; i += 1) {
+      this.loadingArticle(this.timestamp, this.icon, this.description);
+    }
   }
 
-  renderLayout() {
-    this.a = 123;
-    console.log(this.a);
+  loadingArticle(timestamp, image, description) {
+    this.articleEl = document.createElement('div');
+    this.articleEl.className = 'article';
+    this.timestampEl = document.createElement('div');
+    this.timestampEl.className = 'article__timestamp loading';
+    this.timestampEl.textContent = timestamp;
+    this.descriptionEl = document.createElement('div');
+    this.descriptionEl.className = 'article__description loading';
+    this.descriptionEl.textContent = description;
+    this.imageEl = document.createElement('img');
+    this.imageEl.className = 'article__image loading';
+    this.imageEl.style.width = `${75}px`;
+    this.imageEl.style.height = `${75}px`;
+    this.articleEl.append(this.timestampEl, this.imageEl, this.descriptionEl);
+    this.newsArticlesEl.append(this.articleEl);
   }
 
   renderArticle(timestamp, image, description) {

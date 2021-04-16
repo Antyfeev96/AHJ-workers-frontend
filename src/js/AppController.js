@@ -5,7 +5,8 @@ export default class AppController {
   }
 
   init() {
-    this.layout.initRender();
+    this.layout.loadingRender();
+    this.articlesEl = document.querySelector('.news__articles');
   }
 
   async renderArticle() {
@@ -16,8 +17,12 @@ export default class AppController {
   }
 
   async getArticles() {
-    this.data = await this.api.getArticles();
-    this.articles = await this.data.articles;
+    await this.api.getArticles().then((data) => {
+      this.articles = data.articles;
+      while (this.articlesEl.firstChild) {
+        this.articlesEl.firstChild.remove();
+      }
+    });
     return this.articles;
   }
 }
