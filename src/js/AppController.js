@@ -1,30 +1,23 @@
 export default class AppController {
-  constructor(layout) {
+  constructor(layout, api) {
     this.layout = layout;
+    this.api = api;
   }
 
   init() {
     this.layout.initRender();
   }
 
-  renderArticle(timestamp) {
-    this.layout.renderArticle(timestamp);
+  async renderArticle() {
+    await this.getArticles();
+    for (const article of this.articles) {
+      this.layout.renderArticle(article.received, article.image, article.description);
+    }
   }
 
-  formatDate(date) {
-    this.date = date || new Date();
-
-    this.yearFormatter = new Intl.DateTimeFormat('ru', {
-      year: 'numeric',
-      month: 'numeric',
-      day: 'numeric',
-    });
-
-    this.dayFormatter = new Intl.DateTimeFormat('ru', {
-      hour: 'numeric',
-      minute: 'numeric',
-    });
-
-    return `${this.dayFormatter.format(this.date)} ${this.yearFormatter.format(this.date)}`;
+  async getArticles() {
+    this.data = await this.api.getArticles();
+    this.articles = await this.data.articles;
+    return this.articles;
   }
 }

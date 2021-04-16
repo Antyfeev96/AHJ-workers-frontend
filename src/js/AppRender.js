@@ -22,7 +22,7 @@ export default class AppRender {
     this.body.append(this.container);
   }
 
-  renderArticle(timestamp) {
+  renderArticle(timestamp, image, description) {
     this.articleEl = document.createElement('div');
     this.articleEl.className = 'article';
     this.timestampEl = document.createElement('div');
@@ -30,9 +30,9 @@ export default class AppRender {
     this.timestampEl.textContent = timestamp;
     this.descriptionEl = document.createElement('div');
     this.descriptionEl.className = 'article__description';
-    this.descriptionEl.textContent = 'Мстители 228 стартуют в кинотеатрах уже 322 февраля 1488 года';
+    this.descriptionEl.textContent = description;
     this.imageEl = document.createElement('img');
-    this.imageEl.src = this.icon;
+    this.imageEl.src = image;
     this.imageEl.className = 'article__image';
     this.imageEl.style.width = `${75}px`;
     this.imageEl.style.height = `${75}px`;
