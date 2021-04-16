@@ -64,3 +64,17 @@ body {
   background-color: grey;
   color: grey;
 }
+
+.error {
+  position: absolute;
+  top: 20%;
+  left: 35%;
+  width: 400px;
+  border: 2px solid grey;
+  border-radius: 10px;
+
+  &__text {
+    margin: 0 auto;
+    text-align: center;
+  }
+}

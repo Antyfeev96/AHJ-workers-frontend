@@ -11,6 +11,10 @@ export default class AppController {
 
   async renderArticle() {
     await this.getArticles();
+    if (!this.articles) {
+      this.layout.renderError();
+      return;
+    }
     for (const article of this.articles) {
       this.layout.renderArticle(article.received, article.image, article.description);
     }

@@ -61,4 +61,21 @@ export default class AppRender {
     this.articleEl.append(this.timestampEl, this.imageEl, this.descriptionEl);
     this.newsArticlesEl.append(this.articleEl);
   }
+
+  renderError() {
+    this.errorEl = document.createElement('div');
+    this.errorEl.className = 'error';
+    this.errorTextEl = document.createElement('div');
+    this.errorTextEl.className = 'error__text';
+    this.p1 = document.createElement('p');
+    this.p1.textContent = 'Не удалось загрузить данные';
+    this.p2 = document.createElement('p');
+    this.p2.textContent = 'Проверьте подключение';
+    this.p3 = document.createElement('p');
+    this.p3.textContent = 'и обновите страницу';
+    this.errorTextEl.append(this.p1, this.p2, this.p3);
+    this.errorEl.append(this.errorTextEl);
+    this.errorEl.style.width = document.querySelector('.news').style.width;
+    this.errorEl.style.height = document.querySelector('.news').style.height;
+  }
 }
