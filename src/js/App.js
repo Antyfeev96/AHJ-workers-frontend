@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import icon from '../images/meme.jpg';
 import API from './API';
 import AppController from './AppController';

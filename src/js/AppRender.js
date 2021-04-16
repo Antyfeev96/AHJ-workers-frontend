@@ -7,6 +7,9 @@ export default class AppRender {
   }
 
   initRender() {
+    while (this.body.firstChild) {
+      this.body.firstChild.remove();
+    }
     this.newsEl = document.createElement('div');
     this.newsEl.className = 'news';
     this.newsTitleEl = document.createElement('div');
@@ -20,6 +23,11 @@ export default class AppRender {
     this.newsEl.append(this.newsTitleEl, this.newsUpdaterEl, this.newsArticlesEl);
     this.container.append(this.newsEl);
     this.body.append(this.container);
+  }
+
+  renderLayout() {
+    this.a = 123;
+    console.log(this.a);
   }
 
   renderArticle(timestamp, image, description) {
