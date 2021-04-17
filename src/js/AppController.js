@@ -1,3 +1,5 @@
+/* eslint-disable consistent-return */
+/* eslint-disable class-methods-use-this */
 export default class AppController {
   constructor(layout, api) {
     this.layout = layout;
@@ -7,26 +9,47 @@ export default class AppController {
   init() {
     this.layout.loadingRender();
     this.articlesEl = document.querySelector('.news__articles');
+    this.newsEl = document.querySelector('.news');
+    this.registerWorker();
+    this.addUpdateListener();
+  }
+
+  addUpdateListener() {
+    this.updater = document.querySelector('.news__updater');
+    this.updater.addEventListener('click', () => {
+      this.renderArticle();
+    });
   }
 
   async renderArticle() {
-    await this.getArticles();
-    if (!this.articles) {
+    this.data = await this.getArticles();
+    if (!this.data) {
+      console.log('AppController Fail');
+      this.newsEl.style.opacity = 0.1;
       this.layout.renderError();
       return;
     }
-    for (const article of this.articles) {
-      this.layout.renderArticle(article.received, article.image, article.description);
+    this.articles = this.data.articles;
+    while (this.articlesEl.firstChild) {
+      this.articlesEl.firstChild.remove();
     }
+    this.articles.forEach((article) => {
+      this.layout.renderArticle(article.received, article.image, article.description);
+    });
+    console.log('Success');
   }
 
   async getArticles() {
-    await this.api.getArticles().then((data) => {
-      this.articles = data.articles;
-      while (this.articlesEl.firstChild) {
-        this.articlesEl.firstChild.remove();
-      }
-    });
-    return this.articles;
+    return this.api.getArticles();
+  }
+
+  registerWorker() {
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker
+        .register('/service.worker.js')
+        .then((event) => {
+          console.log('Service worker registered', event);
+        });
+    }
   }
 }

@@ -36,6 +36,19 @@ module.exports = {
         type: 'asset/resource',
       },
       {
+        test: /service.worker\.js$/,
+        loader: 'file-loader',
+        options: {
+          name: '[name].[ext]',
+        },
+      },
+      {
+        test: /web.worker\.js$/,
+        use: {
+          loader: 'worker-loader',
+        },
+      },
+      {
         test: /.(sa|sc|c)ss$/,
         use: [
           {

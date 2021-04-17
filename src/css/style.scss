@@ -67,14 +67,15 @@ body {
 
 .error {
   position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   top: 20%;
   left: 35%;
-  width: 400px;
   border: 2px solid grey;
   border-radius: 10px;
 
   &__text {
-    margin: 0 auto;
     text-align: center;
   }
 }

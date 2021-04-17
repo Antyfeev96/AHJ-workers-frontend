@@ -7,3 +7,4 @@ import AppRender from './AppRender';
 const app = new AppController(new AppRender(), new API());
 app.init();
 app.renderArticle();
+// app.getArticles();

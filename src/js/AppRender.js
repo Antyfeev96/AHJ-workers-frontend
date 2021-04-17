@@ -65,6 +65,8 @@ export default class AppRender {
   renderError() {
     this.errorEl = document.createElement('div');
     this.errorEl.className = 'error';
+    this.errorEl.style.width = `${document.querySelector('.news').offsetWidth}px`;
+    this.errorEl.style.height = `${document.querySelector('.news').offsetHeight}px`;
     this.errorTextEl = document.createElement('div');
     this.errorTextEl.className = 'error__text';
     this.p1 = document.createElement('p');
@@ -75,7 +77,6 @@ export default class AppRender {
     this.p3.textContent = 'и обновите страницу';
     this.errorTextEl.append(this.p1, this.p2, this.p3);
     this.errorEl.append(this.errorTextEl);
-    this.errorEl.style.width = document.querySelector('.news').style.width;
-    this.errorEl.style.height = document.querySelector('.news').style.height;
+    this.body.append(this.errorEl);
   }
 }
