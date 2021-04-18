@@ -1,6 +1,6 @@
 export default class API {
   async getArticles() {
-    this.response = await fetch('http://localhost:7070/articles')
+    this.response = await fetch('https://ahj-workers-backend.herokuapp.com/articles')
       .then(async (value) => {
         this.articles = await value.json();
       })
