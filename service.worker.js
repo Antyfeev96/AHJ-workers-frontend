@@ -4,7 +4,7 @@ const cacheName = 'ahj-workers';
 const files = [
   './',
   './bundle.js',
-  './main.39151efd6fe9f19706da.css',
+  // './main.39151efd6fe9f19706da.css',
 ];
 
 async function putFilesToCache(data) {
