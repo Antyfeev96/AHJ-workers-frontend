@@ -25,6 +25,7 @@ module.exports = {
     new ESLintPlugin(),
     new CopyPlugin({
       patterns: [
+        { from: './src', to: './' },
         { from: './service.worker.js', to: './' },
       ],
     }),

@@ -48,7 +48,7 @@ export default class AppController {
       window.addEventListener('load', async () => {
         try {
           await navigator.serviceWorker.register(
-            '/AHJ-workers-frontend/service.worker.js', { scope: './' },
+            '/service.worker.js', { scope: './' },
           );
         } catch (e) {
           console.log(e);
