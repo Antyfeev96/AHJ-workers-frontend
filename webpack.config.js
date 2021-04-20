@@ -5,6 +5,7 @@ const webpack = require('webpack');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ESLintPlugin = require('eslint-webpack-plugin');
+const CopyPlugin = require('copy-webpack-plugin');
 
 module.exports = {
   target: 'web',
@@ -22,6 +23,11 @@ module.exports = {
       template: 'index.html',
     }),
     new ESLintPlugin(),
+    new CopyPlugin({
+      patterns: [
+        { from: './service.worker.js', to: './' },
+      ],
+    }),
   ],
 
   module: {
