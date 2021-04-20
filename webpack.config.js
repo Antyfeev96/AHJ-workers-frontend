@@ -18,7 +18,7 @@ module.exports = {
   plugins: [
     new webpack.HotModuleReplacementPlugin({}),
     new webpack.ProgressPlugin(),
-    new MiniCssExtractPlugin({ filename: 'main.[contenthash].css' }),
+    new MiniCssExtractPlugin({ filename: 'main.css' }),
     new HtmlWebpackPlugin({
       template: 'index.html',
     }),
