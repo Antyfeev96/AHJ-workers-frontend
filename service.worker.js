@@ -2,7 +2,7 @@
 /* eslint-disable no-unused-vars */
 const cacheName = 'ahj-workers';
 const files = [
-  './',
+  // './',
   './bundle.js',
   // './main.39151efd6fe9f19706da.css',
 ];
