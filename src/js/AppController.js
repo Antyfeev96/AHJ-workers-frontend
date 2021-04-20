@@ -7,10 +7,10 @@ export default class AppController {
   }
 
   init() {
+    this.registerWorker();
     this.layout.loadingRender();
     this.articlesEl = document.querySelector('.news__articles');
     this.newsEl = document.querySelector('.news');
-    this.registerWorker();
     this.addUpdateListener();
   }
 
@@ -44,12 +44,16 @@ export default class AppController {
   }
 
   registerWorker() {
-    if ('serviceWorker' in navigator) {
-      navigator.serviceWorker
-        .register('/service.worker.js')
-        .then((event) => {
-          console.log('Service worker registered', event);
-        });
+    if (navigator.serviceWorker) {
+      window.addEventListener('load', async () => {
+        try {
+          await navigator.serviceWorker.register(
+            '/service.worker.js', { scope: './' },
+          );
+        } catch (e) {
+          console.log(e);
+        }
+      });
     }
   }
 }
